@@ -25,8 +25,7 @@ if [[ -n $INPUT_PATH ]]; then
   cd $INPUT_PATH
 else
   # Without a custom path though, we can just grab the .git directory and the PKGBUILD.
-  cp -rfv "$GITHUB_WORKSPACE"/.git ./
-  cp -fv "$GITHUB_WORKSPACE"/PKGBUILD ./
+  cp -rfv "$GITHUB_WORKSPACE"/* ./
 fi
 echo "::endgroup::"
 
@@ -94,8 +93,5 @@ fi
 WORKPATH=$GITHUB_WORKSPACE/$INPUT_PATH
 WORKPATH=${WORKPATH%/} # Remove trailing slash if $INPUT_PATH is empty
 echo "::group::Copying files from $HOME/gh-action to $WORKPATH"
-sudo cp -fv PKGBUILD "$WORKPATH"/PKGBUILD
-if [[ -e .SRCINFO ]]; then
-    sudo cp -fv .SRCINFO "$WORKPATH"/.SRCINFO
-fi
+sudo cp -rfv * "$WORKPATH"/
 echo "::endgroup::"
