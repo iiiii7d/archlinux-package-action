@@ -30,7 +30,7 @@ Following inputs can be used as `step.with` keys
 | `srcinfo`                  | Boolean | `false`                       | `false`  | Generate new .SRCINFO                                                            |
 | `namcap`                   | Boolean | `true`                        | `false`  | Validate PKGBUILD                                                                |
 | `flags`                    | String  | `-cfs --noconfirm`            | `false`  | Flags after `makepkg` command. Leave this empty will disable this command.       |
-| `aur`                      | Boolean | `false`                       | `false`  | Resolve dependencies using paru                                                  |
+| `aur`                      | Boolean | `false`                       | `false`  | Resolve dependencies using yay                                                   |
 | `update_archlinux_keyring` | Boolean | `true`                        | `false`  | Update the archlinux keyring                                                     |
 | `pgpkeys`                  | String  |                               | `false`  | Comma-separated PGP public keys to be loaded before calling makepkg.             |
 | `pgpkeyserver`             | String  | `hkps://keyserver.ubuntu.com` | `false`  | PGP key server address.                                                          |
@@ -56,7 +56,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: heyhusen/archlinux-package-action@v2
+        uses: heyhusen/archlinux-package-action@v3
 ```
 
 #### 2. Only generate .SRCINFO
@@ -76,7 +76,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: heyhusen/archlinux-package-action@v2
+        uses: heyhusen/archlinux-package-action@v3
         with:
           flags: ''
           namcap: false
@@ -100,7 +100,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: heyhusen/archlinux-package-action@v2
+        uses: heyhusen/archlinux-package-action@v3
         with:
           flags: ''
           namcap: false
@@ -124,7 +124,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: heyhusen/archlinux-package-action@v2
+        uses: heyhusen/archlinux-package-action@v3
         with:
           path: package
           flags: '-si --noconfirm'

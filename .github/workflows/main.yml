@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Update action.yml to build locally
         run: |
@@ -26,14 +26,14 @@ jobs:
 
       - name: Get sample package
         run: |
-          # Spotify 1:1.2.63.394-1
+          # Spotify 1:1.2.79.427-1
           mkdir spotify
           pushd spotify
-          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/PKGBUILD
-          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/.SRCINFO
-          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/LICENSE
-          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/spotify.protocol
-          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/spotify.sh
+          wget https://github.com/christian-heusel/aur/raw/f12a03c830a3d4a5c16de561bf411eec55d0798c/spotify/PKGBUILD
+          wget https://github.com/christian-heusel/aur/raw/f12a03c830a3d4a5c16de561bf411eec55d0798c/spotify/.SRCINFO
+          wget https://github.com/christian-heusel/aur/raw/f12a03c830a3d4a5c16de561bf411eec55d0798c/spotify/LICENSE
+          wget https://github.com/christian-heusel/aur/raw/f12a03c830a3d4a5c16de561bf411eec55d0798c/spotify/spotify.protocol
+          wget https://github.com/christian-heusel/aur/raw/f12a03c830a3d4a5c16de561bf411eec55d0798c/spotify/spotify.sh
           popd
       - name: Running test
         uses: ./
@@ -42,7 +42,7 @@ jobs:
           updpkgsums: true
           srcinfo: true
           path: 'spotify'
-          pgpkeys: 'C85668DF69375001'
+          pgpkeys: '5384CE82BA52C83A'
 
       - name: Show diff
         run: |
@@ -59,7 +59,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Log in to ghcr.io
         uses: redhat-actions/podman-login@v1
@@ -108,7 +108,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Get sample PKGBUILD
         run: wget https://github.com/${{ github.repository_owner }}/plenti-bin/raw/f5ffaaee02a2119aa16f6b7a27e87e198e096b47/PKGBUILD
@@ -148,7 +148,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Get branch/tag names
         id: branch-name
